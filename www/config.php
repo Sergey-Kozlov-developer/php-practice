@@ -1,10 +1,10 @@
 <?php
 
 
-const DB_HOST = 'database';
-const DB_NAME = 'foods';
-const DB_USER = 'root';
-const DB_PASSWORD = 'tiger';
+define('DB_HOST', "database");
+define('DB_NAME', 'foods'); // название БД(которую создали)
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'tiger');
 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
     $protocol = 'https://';
