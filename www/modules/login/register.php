@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 $errors = [];
 
@@ -11,10 +12,12 @@ if (isset($_POST['submit'])) {
     $password = password_hash(($_POST['password']), PASSWORD_DEFAULT);
 
     // проверка на заполненность полей
-    $errors = validate_register_form($_POST);
+    $err = new Validate();
+    $errors = $err->validate_register_form($_POST);
 
     if (empty($errors)) {
-        $pdo = db_connect();
+        $db_connect = new DbConnect();
+        $pdo = $db_connect->db_connect();
 
         try {
             // Проверка существования email

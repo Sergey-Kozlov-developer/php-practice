@@ -3,6 +3,7 @@
 require_once ('./config.php');
 require_once ("./functions/all.php");
 
+
 // сессия
 $_SESSION['errors'] = array();
 $_SESSION['success'] = array();
