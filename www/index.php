@@ -29,6 +29,10 @@ switch ($uriModule) {
         require(ROOT . 'modules/login/register.php');
         break;
 
+    case 'logout':
+        require(ROOT . 'modules/login/logout.php');
+        break;
+
 
 //    default:
 //        require(ROOT . 'modules/main/index.php');
