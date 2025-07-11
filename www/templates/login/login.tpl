@@ -1,6 +1,8 @@
 <section class="auth-container">
     <div class="auth-form">
         <h2>Вход в систему</h2>
+
+
         <form action="<?=HOST?>login" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>

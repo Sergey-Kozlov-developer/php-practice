@@ -5,17 +5,19 @@ function  validate_register_form($data): array
     $errors = array();
 
     if(empty($data['name'])){
-        $errors['name'] = "Name is required";
+        $errors['name'] = "Имя обязательно";
     }
 
     if(empty($data['email'])){
-        $errors['email'] = "Email is required";
+        $errors['email'] = "Email обязателен";
     } elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-        $errors['email'] = "Invalid email format";
+        $errors['email'] = "Неверный формат email";
     }
 
     if (empty($data['password'])){
-        $errors['password'] = "Password is required";
+        $errors['password'] = "Пароль обязателен";
+    } elseif(strlen($data['password']) < 6) {
+        $errors['password'] = "Пароль не может быть меньше 6 символов";
     }
 
     return $errors;

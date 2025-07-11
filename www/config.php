@@ -15,4 +15,4 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
 define('HOST', $protocol . $_SERVER['HTTP_HOST'] . '/');
 define('ROOT', dirname(__FILE__) . '/');
 
-session_start();
+//session_start();
