@@ -2,19 +2,8 @@
     <div class="auth-form">
         <h2>Регистрация</h2>
 
-        <?php if (!empty($_SESSION['success'])): ?>
-            <div class="alert alert-success">
-                <?= $_SESSION['success'] ?>
-                <?php unset($_SESSION['success']) ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if (!empty($error)): ?>
-            <div class="alert alert-danger">
-                <?= $error ?>
-                <?php unset($error) ?>
-            </div>
-        <?php endif; ?>
+        <?php include ROOT . "templates/components/errors.tpl"; ?>
+        <?php include ROOT . "templates/components/success.tpl"; ?>
 
         <form action="<?= HOST ?>register" method="POST">
             <div class="form-group">
@@ -23,12 +12,11 @@
                         type="text"
                         id="name"
                         name="name"
-                        class="form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>"
+                        class="form-control <?= isset($_SESSION['errors']['name']) ? 'is-invalid' : '' ?>"
                         value="<?php echo $_POST['name'] ?? ''; ?>"
-                        required
                 >
-                <?php if (isset($errors['name'])): ?>
-                    <div class="invalid-feedback"><?= $errors['name'] ?></div>
+                <?php if (isset($_SESSION['errors']['name'])): ?>
+                    <div class="invalid-feedback"><?= $_SESSION['errors']['name']['title'] ?></div>
                 <?php endif; ?>
             </div>
             <div class="form-group">
@@ -37,12 +25,11 @@
                         type="email"
                         id="email"
                         name="email"
-                        class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>"
+                        class="form-control <?= isset($_SESSION['errors']['email']) ? 'is-invalid' : '' ?>"
                         value="<?php echo $_POST['email'] ?? ''; ?>"
-                        required
                 >
-                <?php if (isset($errors['email'])): ?>
-                    <div class="invalid-feedback"><?= $errors['email'] ?></div>
+                <?php if (isset($_SESSION['errors']['email'])): ?>
+                    <div class="invalid-feedback"><?= $_SESSION['errors']['email']['title'] ?></div>
                 <?php endif; ?>
             </div>
             <div class="form-group">
@@ -51,11 +38,10 @@
                         type="password"
                         id="password"
                         name="password"
-                        class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>"
-                        required
+                        class="form-control <?= isset($_SESSION['errors']['password']) ? 'is-invalid' : '' ?>"
                 >
-                <?php if (isset($errors['password'])): ?>
-                    <div class="invalid-feedback"><?= $errors['password'] ?></div>
+                <?php if (isset($_SESSION['errors']['password'])): ?>
+                    <div class="invalid-feedback"><?= $_SESSION['errors']['password']['title'] ?></div>
                 <?php endif; ?>
             </div>
             <button type="submit" name="submit" value="submit" class="btn" style="width: 100%;">Зарегистрироваться

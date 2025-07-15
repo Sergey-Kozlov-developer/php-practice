@@ -13,13 +13,13 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
     $password = !empty($_POST['password']) ? trim($_POST['password']) : null;
 
-    $err = new Validate();
-    $_SESSION['errors'][] = $err->validate_login_form($_POST);
+//    $err = new Validate();
+    $_SESSION['errors'][] = Validate::validate_login_form($_POST);
 
     if (!empty($_SESSION['errors'])) {
         // подкл к бд
-        $db_connect = new DbConnect();
-        $pdo = $db_connect->db_connect();
+//        $db_connect = new DbConnect();
+        $pdo = DbConnect::db_connect();
 
 
         try {
@@ -42,11 +42,11 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     header("Location: " . HOST);
                     exit;
                 } else {
-                    $_SESSION['errors'][] = "Неверный пароль";
+                    $_SESSION['errors'][] = ["title" =>"Неверный пароль"];
 
                 }
             } else {
-                $_SESSION['errors'][] = "Пользователь с таким email не найден";
+                $_SESSION['errors'][] = ["title" =>"Пользователь с таким email не найден"];
             }
 
         } catch (PDOException $e) {

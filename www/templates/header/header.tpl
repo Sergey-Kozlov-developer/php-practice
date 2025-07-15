@@ -11,8 +11,8 @@
                 <?php if (isset($_SESSION['user_id']) && $_SESSION['logged_in'] === 1): ?>
                     <li><a href="<?=HOST?>logout">Выйти</a></li>
                 <?php else: ?>
-                    <li><a href="<?=HOST?>login" class="form-control">Войти</a></li>
-                    <li><a href="<?=HOST?>register" class="form-control">Регистрация</a></li>
+                    <li><a href="<?=HOST?>login">Войти</a></li>
+                    <li><a href="<?=HOST?>register">Регистрация</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

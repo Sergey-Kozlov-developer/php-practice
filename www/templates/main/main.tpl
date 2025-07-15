@@ -3,10 +3,7 @@
 
         <h1>Видовой ресторан Food Exxe Relo </h1>
         <p>на Крестовском острове</p>
-        <div class="hero-buttons">
-            <a href="<?=HOST?>login" class="btn">Войти</a>
-            <a href="<?=HOST?>register" class="btn btn-outline">Регистрация</a>
-        </div>
+
     </div>
 </section>
 
