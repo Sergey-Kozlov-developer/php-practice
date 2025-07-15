@@ -9,7 +9,7 @@ if ( !empty($_SESSION['errors']) && is_array($_SESSION['errors'])):
         // Если в ошибке только заголовок
         if (is_array($error) && isset($error['title'])):
             ?>
-            <div class="notifications mb-20">
+            <div class="notifications">
                 <div class="notifications__title notifications__title--error">
                     <?php echo htmlspecialchars($error['title']);?>
                 </div>

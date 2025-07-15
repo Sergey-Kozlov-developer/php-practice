@@ -1,7 +1,7 @@
 <?php
 
 //
-//session_start();
+
 //$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -9,45 +9,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // получаем данные из формы
     $name = isset($_POST['name']) ? trim($_POST['name']) : '';
     $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $password = password_hash((isset($_POST['password'])), PASSWORD_DEFAULT);
+    $password = isset($_POST['password']) ? trim($_POST['password']) : '';
 
     // проверка на заполненность полей
     $errors = Validate::validate_register_form($_POST);
+//    var_dump($errors);
+//    die();
 
-    if (empty($errors)) {
-        $pdo = DbConnect::db_connect();
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
 
+    } else {
         try {
+            $pdo = DbConnect::db_connect();
             // Проверка существования email
-            $checkEmail = $pdo->prepare("SELECT id FROM users WHERE email = :email");
-            $checkEmail->execute([':email' => $email]);
+            $checkEmail = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+            $checkEmail->execute([$email]);
 
             if ($checkEmail->fetch()) {
-                $_SESSION['errors'][] = ["title" => "Этот email уже зарегистрирован"];
-//                $_SESSION['errors'] = $errors;
+                $_SESSION['errors']['email'] = ["title" => "Этот email уже зарегистрирован"];
+
             } else {
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 // SQL запрос для вставки данных
-                $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+                $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
                 $stmt = $pdo->prepare($sql);
 
-                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-                $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-                $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+                $stmt->execute([$name, $email, $passwordHash]);
 
-                if ($stmt->execute()) {
-                    $_SESSION['success'][] = ["title" => 'Регистрация прошла успешно! Теперь вы можете войти.'];
-                    header("Location: " . HOST . "login");
-                    exit;
-                }
+
+                $_SESSION['success'][] = ["title" => 'Регистрация прошла успешно! Теперь вы можете войти.'];
+                header("Location: " . HOST . "login");
+                exit;
+
             }
         } catch (PDOException $e) {
-            $_SESSION['errors'][] = ["title" => 'Ошибка базы данных: '];
             error_log("PDO Error: " . $e->getMessage()); // Запись в лог
+            $_SESSION['errors'][] = ["title" => 'Ошибка базы данных: '];
             die("Ошибка базы данных: " . $e->getMessage()); // Вывод на экран (для отладки)
         }
-    } else {
-        $_SESSION['errors'] = [];
     }
+
 }
 
 

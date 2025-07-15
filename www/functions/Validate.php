@@ -5,25 +5,25 @@ class Validate
 
     public static function validate_register_form($data): array
     {
-        $_SESSION['errors'] = [];
+        $errors = [];
 
         if (empty($data['name'])) {
-            $_SESSION['errors'][] = ["title" =>"Имя обязательно"];
+            $errors[] = ["title" =>"Имя обязательно"];
         }
 
         if (empty($data['email'])) {
-            $_SESSION['errors'][] = ["title" =>"Email обязателен"];
+            $errors[] = ["title" =>"Email обязателен"];
         } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['errors'][] = ["title" =>"Неверный формат email"];
+            $errors[] = ["title" =>"Неверный формат email"];
         }
 
         if (empty($data['password'])) {
-            $_SESSION['errors'][] = ["title" =>"Пароль обязателен"];
+            $errors[] = ["title" =>"Пароль обязателен"];
         } elseif (strlen($data['password']) < 6) {
-            $_SESSION['errors'][] = ["title" =>"Пароль не может быть меньше 6 символов"];
+            $errors[] = ["title" =>"Пароль не может быть меньше 6 символов"];
         }
 
-        return $_SESSION['errors'];
+        return $errors;
     }
 
     public static function validate_login_form($data): array
