@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     // получаем данные из формы
     $name = isset($_POST['name']) ? trim($_POST['name']) : '';
-    $email = isset($_POST['name']) ? trim($_POST['email']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
     $password = password_hash((isset($_POST['password'])), PASSWORD_DEFAULT);
 
     // проверка на заполненность полей
