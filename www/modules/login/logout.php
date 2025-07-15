@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 
 // Удаляем все данные сессии
 $_SESSION = [];

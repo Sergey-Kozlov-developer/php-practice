@@ -1,20 +1,8 @@
 <section class="auth-container">
     <div class="auth-form">
         <h2>Вход в систему</h2>
-
-<!--        --><?php //if (!empty($_SESSION['success'])): ?>
-<!--            <div class="alert alert-success">-->
-<!--                --><?php //= $_SESSION['success'] ?>
-<!--                --><?php //unset($_SESSION['success']) ?>
-<!--            </div>-->
-<!--        --><?php //endif; ?>
-<!---->
-<!--        --><?php //if (!empty($error)): ?>
-<!--            <div class="alert alert-danger">-->
-<!--                --><?php //= $error ?>
-<!--                --><?php //unset($error) ?>
-<!--            </div>-->
-<!--        --><?php //endif; ?>
+        <?php include ROOT . "templates/components/errors.tpl"; ?>
+        <?php include ROOT . "templates/components/success.tpl"; ?>
 
         <form action="<?=HOST?>login" method="POST">
             <div class="form-group">

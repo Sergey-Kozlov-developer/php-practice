@@ -5,10 +5,10 @@
         <nav class="navbar">
             <a href="<?=HOST?>" class="logo">Food Exxe Relo</a>
             <ul class="nav-links">
-                <li><a href="<?=HOST?>" class="form-control">Главная</a></li>
-                <li><a href="<?=HOST?>about" class="form-control">О нас</a></li>
+                <li><a href="<?=HOST?>" >Главная</a></li>
+                <li><a href="<?=HOST?>about" >О нас</a></li>
 
-                <?php if (isset($_SESSION['logged_in'])): ?>
+                <?php if (isset($_SESSION['user_id']) && $_SESSION['logged_in'] === 1): ?>
                     <li><a href="<?=HOST?>logout">Выйти</a></li>
                 <?php else: ?>
                     <li><a href="<?=HOST?>login" class="form-control">Войти</a></li>
