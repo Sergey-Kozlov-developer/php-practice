@@ -1,8 +1,8 @@
 <section class="hero">
     <div class="hero-content">
 
-        <h1>Видовой ресторан Food Exxe Relo </h1>
-        <p>на Крестовском острове</p>
+        <h1>Мини пет-проекты</h1>
+        <p>все написано на PHP 8.3</p>
 
     </div>
 </section>
