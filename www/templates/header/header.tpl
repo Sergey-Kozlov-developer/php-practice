@@ -6,6 +6,7 @@
             <a href="<?=HOST?>" class="logo">Food Exxe Relo</a>
             <ul class="nav-links">
                 <li><a href="<?=HOST?>" >Главная</a></li>
+                <li><a href="<?=HOST?>task" >Задачи</a></li>
                 <li><a href="<?=HOST?>about" >О нас</a></li>
 
                 <?php if (isset($_SESSION['user_id']) && $_SESSION['logged_in'] === 1): ?>

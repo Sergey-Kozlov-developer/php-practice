@@ -25,6 +25,22 @@ switch ($uriModule) {
         require(ROOT . 'modules/main/index.php');
         break;
 
+    case 'task':
+        require(ROOT . 'modules/task/task.php');
+        break;
+
+    case 'add-task':
+        require(ROOT . 'modules/task/add.php');
+        break;
+
+    case 'toggle-task':
+        require(ROOT . 'modules/task/toggle.php');
+        break;
+
+    case 'delete-task':
+        require(ROOT . 'modules/task/delete.php');
+        break;
+
     case 'about':
         require(ROOT . 'modules/about/index.php');
         break;

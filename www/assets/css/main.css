@@ -44,12 +44,8 @@ body {
     background-color: var(--light);
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+
+
 
 .alert {
     padding: 1rem;
@@ -377,6 +373,160 @@ body {
 /* Стили для уведомлений с дополнительным сообщением */
 .notifications__title--with-message {
     padding: 1.25rem;
+}
+
+/* To-Do List Styles (дополнение к main.css) */
+.todo {
+    margin: 8rem auto;
+    max-width: 600px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    font-family: var(--font-main);
+}
+
+.todo__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.todo__title {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.todo__form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.todo__input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.todo__input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.todo__btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.todo__btn:hover {
+    background-color: var(--secondary);
+    transform: translateY(-1px);
+}
+
+.todo__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo__item {
+    background-color: var(--light);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.todo__item:hover {
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todo__item--completed {
+    background-color: #e8f5e9;
+    color: var(--success);
+    text-decoration: line-through;
+}
+
+.todo__text {
+    flex: 1;
+    padding: 0 1rem;
+    word-break: break-word;
+}
+
+.todo__actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.todo__action {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.todo__action--complete {
+    background-color: var(--success);
+}
+
+.todo__action--delete {
+    background-color: var(--danger);
+}
+
+.todo__action:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .todo {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .todo__form {
+        flex-direction: column;
+    }
+
+    .todo__btn {
+        width: 100%;
+    }
 }
 
 /* Анимация появления */

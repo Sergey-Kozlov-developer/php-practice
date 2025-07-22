@@ -70,6 +70,29 @@
         .notifications__title--with-message {
             padding: 1.25rem;
         }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .actions a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .actions a:hover {
+            color: #f00;
+        }
+
+        .container_task {
+
+            /*width: 100%;*/
+            /*max-width: 1200px;*/
+            /*margin: 0 auto;*/
+            padding: 10rem 0 4rem;
+            /*padding-top: 180px;*/
+        }
 
         /* Анимация появления */
         @keyframes fadeIn {
