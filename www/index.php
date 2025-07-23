@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once ('./config.php');
-require_once ("./functions/all.php");
+require_once('./config.php');
+require_once("./functions/all.php");
 
 
 // сессия
@@ -41,6 +41,18 @@ switch ($uriModule) {
         require(ROOT . 'modules/task/delete.php');
         break;
 
+    case 'users':
+        require(ROOT . 'modules/users/users.php');
+        break;
+
+    case 'add-users':
+        require(ROOT . 'modules/users/add-users.php');
+        break;
+
+    case 'edit-users':
+        require(ROOT . 'modules/users/edit-users.php');
+        break;
+
     case 'about':
         require(ROOT . 'modules/about/index.php');
         break;
@@ -58,10 +70,7 @@ switch ($uriModule) {
         break;
 
 
-//    default:
-//        require(ROOT . 'modules/main/index.php');
-//        break;
+        //    default:
+        //        require(ROOT . 'modules/main/index.php');
+        //        break;
 }
-
-
-

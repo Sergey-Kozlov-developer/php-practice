@@ -8,19 +8,19 @@ class Validate
         $errors = [];
 
         if (empty($data['name'])) {
-            $errors[] = ["title" =>"Имя обязательно"];
+            $errors[] = ["title" => "Имя обязательно"];
         }
 
         if (empty($data['email'])) {
-            $errors[] = ["title" =>"Email обязателен"];
+            $errors[] = ["title" => "Email обязателен"];
         } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = ["title" =>"Неверный формат email"];
+            $errors[] = ["title" => "Неверный формат email"];
         }
 
         if (empty($data['password'])) {
-            $errors[] = ["title" =>"Пароль обязателен"];
+            $errors[] = ["title" => "Пароль обязателен"];
         } elseif (strlen($data['password']) < 6) {
-            $errors[] = ["title" =>"Пароль не может быть меньше 6 символов"];
+            $errors[] = ["title" => "Пароль не может быть меньше 6 символов"];
         }
 
         return $errors;
@@ -30,18 +30,43 @@ class Validate
     {
         $errors = [];
 
+
         if (empty($data['email'])) {
-            $errors[] = ["title" =>"Введите email"];
+            $errors[] = ["title" => "Введите email"];
         } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = ["title" =>"Неверный формат email"];
+            $errors[] = ["title" => "Неверный формат email"];
         }
 
         if (empty($data['password'])) {
-            $errors[] = ["title" =>"Пароль обязателен"];
+            $errors[] = ["title" => "Пароль обязателен"];
         }
 
 
         return $errors;
+    }
+    public static function add_users_form($data): array
+    {
+        $errors = [];
 
+        if (empty($data['name'])) {
+            $errors[] = ["title" => "Имя обязательно"];
+        }
+
+        if (empty($data['email'])) {
+            $errors[] = ["title" => "Введите email"];
+        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = ["title" => "Неверный формат email"];
+        }
+
+        if (empty($data['password'])) {
+            $errors[] = ["title" => "Пароль обязателен"];
+        }
+
+        if (empty($data['role'])) {
+            $errors[] = ["title" => "Выберите роль"];
+        }
+
+
+        return $errors;
     }
 }

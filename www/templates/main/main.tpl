@@ -3,15 +3,7 @@
 
         <h1>Мини пет-проекты</h1>
         <p>все написано на PHP 8.3</p>
+        <h2>Часть функционала доступна после регистрации</h2>
 
-    </div>
-</section>
-
-<section class="features">
-    <div class="container">
-        <h2 class="section-title">Наши преимущества</h2>
-        <div class="features-grid">
-            <!-- Здесь могут быть карточки с преимуществами -->
-        </div>
     </div>
 </section>

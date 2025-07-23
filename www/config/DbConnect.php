@@ -6,8 +6,10 @@ class DbConnect
     public static function db_connect()
     {
         try {
-            $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
-                DB_USER, DB_PASSWORD,
+            $pdo = new PDO(
+                "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+                DB_USER,
+                DB_PASSWORD,
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // обработка ошибок
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // вкл ассоциативный массив
@@ -17,11 +19,9 @@ class DbConnect
             );
 
             return $pdo;
-
         } catch (PDOException $e) {
             error_log($e->getMessage());
             die("Ошибка подключения к базе данных");
         }
-
     }
 }
