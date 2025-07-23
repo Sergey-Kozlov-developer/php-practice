@@ -9,6 +9,15 @@
 
 -   Добавление/редактирование/удаление пользователей
 
--   Clone this repository on your local computer
--   configure .env as needed
--   Run the `docker compose up -d`.
+###
+
+###
+
+###
+
+### Для запуска проекта
+
+-   `cp sample.env .env`
+-   // modify sample.env as needed
+-   `docker compose up -d`
+-   // visit localhost
