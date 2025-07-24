@@ -8,17 +8,17 @@
 //var_dump($_SESSION);
 //die();
 
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // получаем данные формы
     $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
     $password = !empty($_POST['password']) ? trim($_POST['password']) : null;
 
-//    $err = new Validate();
+    //    $err = new Validate();
     $_SESSION['errors'][] = Validate::validate_login_form($_POST);
 
     if (!empty($_SESSION['errors'])) {
         // подкл к бд
-//        $db_connect = new DbConnect();
+        //        $db_connect = new DbConnect();
         $pdo = DbConnect::db_connect();
 
 
@@ -36,29 +36,27 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     $_SESSION['user_email'] = $user['email'];
                     $_SESSION['logged_in'] = 1;
 
-                    $_SESSION['success'] = 'Вы вошли на сайт';
+                    $_SESSION['success'][] = ['title' => 'Вы вошли на сайт'];
 
 
-                    header("Location: " . HOST);
+                    header("Location: " . HOST . "users");
                     exit;
                 } else {
-                    $_SESSION['errors'][] = ["title" =>"Неверный пароль"];
-
+                    $_SESSION['errors'][] = ["title" => "Неверный пароль"];
                 }
             } else {
-                $_SESSION['errors'][] = ["title" =>"Пользователь с таким email не найден"];
+                $_SESSION['errors'][] = ["title" => "Пользователь с таким email не найден"];
             }
-
         } catch (PDOException $e) {
             error_log("Ошибка входа: " . $e->getMessage());
 
-            $_SESSION['errors'][]= ["title" =>'Ошибка базы данных'];
-//            $_SESSION['errors'] = $errors;
-//            error_log("PDO Error: " . $e->getMessage()); // Запись в лог
-//            die("Ошибка базы данных: " . $e->getMessage()); // Вывод на экран (для отладки)
+            $_SESSION['errors'][] = ["title" => 'Ошибка базы данных'];
+            //            $_SESSION['errors'] = $errors;
+            //            error_log("PDO Error: " . $e->getMessage()); // Запись в лог
+            //            die("Ошибка базы данных: " . $e->getMessage()); // Вывод на экран (для отладки)
         }
     }
-//    $_SESSION['errors'] = $errors;
+    //    $_SESSION['errors'] = $errors;
 
 }
 

@@ -49,6 +49,10 @@ switch ($uriModule) {
         require(ROOT . 'modules/users/add-users.php');
         break;
 
+    case 'delete-users':
+        require(ROOT . 'modules/users/delete-users.php');
+        break;
+
     case 'edit-users':
         require(ROOT . 'modules/users/edit-users.php');
         break;

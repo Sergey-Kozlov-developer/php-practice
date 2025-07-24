@@ -32,7 +32,11 @@
 					</td>
 					<td class="actions">
 						<a href="edit_user.php?id=<?= $user['id'] ?>" class="button button-edit">✏️</a>
-						<a href="delete_user.php?id=<?= $user['id'] ?>" class="button button-delete">🗑️</a>
+						<?php if ($user['id'] != $_SESSION['user_id']): ?>
+							<a href="<?= HOST ?>delete-users?id=<?= $user['id'] ?>" class="button button-delete">🗑️</a>
+						<?php else: ?>
+							<span class="button button-disabled" title="Нельзя удалить себя">🗑️</span>
+						<?php endif; ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
